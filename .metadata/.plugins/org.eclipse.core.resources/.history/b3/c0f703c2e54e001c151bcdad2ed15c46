@@ -1,0 +1,63 @@
+grammar org.xtext.example.iotdsl.IotDsl with org.eclipse.xtext.common.Terminals
+
+generate iotDsl "http://www.xtext.org/example/iotdsl/IotDsl"
+
+//Model:
+//	devices+=Ambiente*;
+//
+//Ambiente:
+//	Entidade
+//;	
+//
+//enum AmbienteEstado:
+//    ABERTO | VAZIO | CHEIO | FECHADO;
+//
+//enum acoesPossiveis:
+//	LIGAR | DESLIGAR | AUMENTAR | DIMINUIR;
+//    
+//Estado:
+//	value=AmbienteEstado;	
+//
+//Dispositivo:
+//	name=ID;	
+//
+//Condicao:
+//	'condicao' name=ID ':' estado=[Estado];
+//
+//Acao:
+//	name=ID (value=acoesPossiveis)? valor=INT;
+//		
+//Regra:
+//	'regra' name=ID ':' '(' d=Dispositivo ',' a=Acao ')';
+//	
+//Feature:
+//    name=ID ':' type=ID (value=AmbienteEstado)?;
+//    
+//Entidade:
+//    'criar' name=ID '{'
+//        (features+=Feature)*
+//    '}';
+// 
+   	
+IotDsl:
+	{IotDsl} 'eventos' (events+=Event)* 
+	'end' 'resetEventos' (resetEvents+=[Event])* 
+	'end' 'commands' (commands+=Command)* 
+	'end' (states+=State)*;
+
+Event:
+  name=ID code=ID;
+
+Command:
+  name=ID code=ID;
+
+State:
+  'state' name=ID
+  ('actions' '{' (actions+=[Command])+ '}')?
+  (transitions+=Transition)*
+  'end';
+
+Transition:
+  event=[Event] '=>' state=[State];
+
+

@@ -1,0 +1,37 @@
+grammar org.xtext.example.iotdsl.IotDsl with org.eclipse.xtext.common.Terminals
+
+generate iotDsl "http://www.xtext.org/example/iotdsl/IotDsl"
+   	
+IotDsl:
+	{IotDsl} 
+	('temnperatura' eventos+=Evento
+	'end')?
+	('eventos' eventos+=Evento+ 
+	'end')?
+	('resetEventos' (resetEventos+=[Evento])+ 
+	'end')?
+	('comandos' (comandos+=Comando)+
+	'end')?
+	estados+=Estado*
+;
+
+temnperatura:
+	'max' max=INT 'min' min=INT
+;
+
+Evento:
+  name=ID;
+
+Comando:
+  name=ID;
+
+Estado:
+  'estado' name=ID
+  ('acoes' '{' (acoes+=[Comando])+ '}')?
+  (transacoes+=Transacao)*
+  'end';
+
+Transacao:
+  evento=[Evento] '=>' estado=[Estado];
+
+

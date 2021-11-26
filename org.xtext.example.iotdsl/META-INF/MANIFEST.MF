@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.example.iotdsl
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.iotdsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.iotdsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.xtext.example.iotdsl.parser.antlr.internal,
+ org.xtext.example.iotdsl.parser.antlr,
+ org.xtext.example.iotdsl,
+ org.xtext.example.iotdsl.serializer,
+ org.xtext.example.iotdsl.generator,
+ org.xtext.example.iotdsl.iotDsl,
+ org.xtext.example.iotdsl.iotDsl.impl,
+ org.xtext.example.iotdsl.iotDsl.util,
+ org.xtext.example.iotdsl.validation,
+ org.xtext.example.iotdsl.services,
+ org.xtext.example.iotdsl.scoping
+Import-Package: org.apache.log4j
