@@ -90,7 +90,8 @@ class IotDslGenerator extends AbstractGenerator {
 				«ENDFOR»
 				executeActions = false;
 			}
-			System.out.println("A biblioteca está '«estado.name»'. Você pode [«estado.transacoes.map(t | t.evento.name).join(', ')»].");
+			System.out.println("A biblioteca está '«estado.name»'. Você pode [«
+				estado.transacoes.map(t | t.evento.name).join(', ')»].");
 			lastEvent = receiveEvent();
 			«FOR t : estado.transacoes»
 				if ("«t.evento.name»".equals(lastEvent)) {

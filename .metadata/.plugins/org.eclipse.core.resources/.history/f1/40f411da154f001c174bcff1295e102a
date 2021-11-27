@@ -17,7 +17,7 @@ Evento:
   name=ID code=ID?;
 
 Comando:
-  name=ID code=ID?;
+  name=ID;
 
 Estado:
   'estado' name=ID

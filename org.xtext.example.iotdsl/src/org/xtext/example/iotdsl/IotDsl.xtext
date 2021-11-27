@@ -3,6 +3,7 @@ grammar org.xtext.example.iotdsl.IotDsl with org.eclipse.xtext.common.Terminals
 generate iotDsl "http://www.xtext.org/example/iotdsl/IotDsl"
    	
 IotDsl:
+	{IotDsl} 
 	('eventos' eventos+=Evento+ 
 	'end')?
 	('resetEventos' (resetEventos+=[Evento])+ 
@@ -11,6 +12,7 @@ IotDsl:
 	'end')?
 	estados+=Estado*
 ;
+
 Evento:
   name=ID code=ID?;
 
